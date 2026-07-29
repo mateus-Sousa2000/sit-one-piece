@@ -1,0 +1,860 @@
+/* Remove os espacos padrao de todos os elementos e facilita o calculo dos tamanhos */
+* {
+    margin: 0;                 /* remove a margem externa padrao */
+    padding: 0;                /* remove o espaco interno padrao */
+    box-sizing: border-box;    /* faz width/height incluirem padding e borda */
+}
+
+/* Estilo geral do corpo da pagina */
+body {
+    font-family: Arial, sans-serif;     /* fonte principal do site */
+    background-color: #0b0b0b;          /* cor de fundo da pagina */
+    color: #f5ead2;                     /* cor padrao dos textos */
+}
+
+/* Usa uma fonte especial nos titulos, links do menu e botoes */
+h1,
+h2,
+h3,
+h4,
+.nav-links a,
+.botao-principal,
+.botao-secundario {
+    font-family: "Cinzel", serif;      /* fonte decorativa para destaque */
+}
+
+/* Estilo padrao dos links */
+a {
+    text-decoration: none;              /* remove o sublinhado dos links */
+    color: inherit;                     /* usa a mesma cor do elemento pai */
+}
+
+/* Estilo padrao das imagens */
+img {
+    max-width: 100%;                    /* impede a imagem de passar da largura do pai */
+    display: block;                     /* remove espaco extra embaixo da imagem */
+}
+
+/* CABECALHO */
+
+/* Area principal do cabecalho */
+.cabecalho {
+    width: 100%;                        /* ocupa toda a largura da tela */
+    position: absolute;                 /* fica posicionado por cima da hero */
+    top: 0;                             /* encosta no topo da pagina */
+    left: 0;                            /* encosta no lado esquerdo */
+    z-index: 10;                        /* fica acima de outros elementos */
+    padding: 20px 60px;                 /* espaco interno em cima/baixo e laterais */
+ 
+}
+
+/* Barra de navegacao */
+.navbar {
+    display: flex;                      /* coloca os itens lado a lado */
+    align-items: center;                /* alinha os itens verticalmente ao centro */
+    justify-content: space-between;     /* separa logo e menu nas extremidades */
+}
+
+/* Imagem da logo */
+.logo-img {
+    width: 190px;                       /* largura da logo */
+}
+
+/* Lista dos links do menu */
+.nav-links {
+    display: flex;                      /* coloca os links em linha */
+    align-items: center;                /* centraliza os links na vertical */
+    gap: 18px;                          /* espaco entre os links */
+    list-style: none;                   /* remove as bolinhas da lista */
+}
+
+/* Links dentro do menu */
+.nav-links a {
+    color:#ffffff;                     /* cor dos links */
+    font-size: 30px;                    /* tamanho da letra */
+    text-transform: uppercase;          /* deixa o texto em maiusculo */
+    letter-spacing: 1px;                /* espaco entre as letras */
+    transition: 0.3s;                   /* suaviza mudancas visuais */
+}
+
+/* Prepara o link para receber o efeito de linha embaixo */
+.nav-links a {
+    position: relative;                 /* permite posicionar o ::after dentro do link */
+    text-decoration: none;              /* remove sublinhado */
+    display: inline-block;              /* permite controlar largura e efeito */
+}
+
+/* Cria a linha decorativa embaixo do link */
+.nav-links a::after {
+    content: "";                       /* cria um elemento visual vazio */
+    position: absolute;                 /* posiciona a linha em relacao ao link */
+    bottom: -8px;                       /* coloca a linha abaixo do texto */
+    left: 0;                            /* comeca no lado esquerdo do link */
+    width: 0;                           /* comeca invisivel */
+    height: 6px;                        /* altura da linha */
+    background: repeating-linear-gradient(45deg, #f4d03f 0px, #f4d03f 3px, #8b5a2b 3px, #8b5a2b 6px); /* fundo listrado */
+    border-radius: 20px;                /* deixa as pontas arredondadas */
+    box-shadow: 0 0 10px rgba(244, 208, 63, 0.8); /* brilho ao redor */
+    transition: width 0.3s ease;        /* anima o crescimento da linha */
+}
+
+/* Mostra a linha quando passa o mouse no link */
+.nav-links a:hover::after {
+    width: 100%;                        /* faz a linha ocupar toda a largura do link */
+}
+
+/* HERO */
+
+/* Primeira area grande do site */
+.hero {
+    min-height: 760px;                  /* altura minima da hero */
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.85)), /* escurece a imagem */
+        url("../img/bando dos chapÃ©us de palha.jpg"); /* imagem de fundo */
+    background-size: cover;             /* faz a imagem cobrir toda a area */
+    background-position: center;        /* centraliza a imagem */
+    background-repeat: no-repeat;       /* impede a imagem de repetir */
+    display: flex;                      /* coloca os conteudos lado a lado */
+    align-items: center;                /* centraliza na vertical */
+    justify-content: space-between;     /* separa os conteudos */
+    padding: 160px 70px 80px;           /* espaco interno: topo, lados e baixo */
+    position: relative;                 /* permite posicionar elementos internos */
+}
+
+/* Caixa do texto da hero */
+.hero-texto {
+    width: 420px;                       /* largura da area de texto */
+}
+
+/* Titulo principal da hero */
+.hero-texto h1 {
+    font-size: 52px;                    /* tamanho do titulo */
+    line-height: 1.1;                   /* altura entre linhas */
+    text-transform: uppercase;          /* deixa o titulo em maiusculo */
+    color: #f5ead2;                     /* cor do titulo */
+    text-shadow: 3px 3px 6px #000;      /* sombra no texto */
+    margin-bottom: 22px;                /* espaco abaixo do titulo */
+}
+
+/* Primeira linha do titulo da hero */
+.hero-texto h1::first-line {
+    color: #f5ead2;                     /* cor da primeira linha */
+}
+
+/* Paragrafo da hero */
+.hero-texto p {
+    font-size: 18px;                    /* tamanho do texto */
+    line-height: 1.6;                   /* altura entre linhas */
+    color: #fff3d7;                     /* cor do paragrafo */
+    margin-bottom: 32px;                /* espaco abaixo do paragrafo */
+}
+
+/* Botoes principais do site */
+.botao-principal,
+.botao-secundario {
+    display: inline-block;              /* permite aplicar padding e tamanho */
+    background-color: #d49a42;          /* cor de fundo */
+    color: #1b1008;                     /* cor do texto */
+    padding: 15px 28px;                 /* espaco interno */
+    font-weight: 700;                   /* deixa o texto em negrito */
+    text-transform: uppercase;          /* deixa o texto em maiusculo */
+    border: 2px solid #8c5a22;          /* borda do botao */
+    box-shadow: 0 4px 0 #5d3412;        /* sombra que cria efeito de relevo */
+    transition: 0.3s;                   /* suaviza mudancas no hover */
+}
+
+/* Efeito dos botoes ao passar o mouse */
+.botao-principal:hover,
+.botao-secundario:hover {
+    background-color: #f0bd65;          /* muda a cor de fundo */
+    transform: translateY(-3px);        /* sobe um pouco o botao */
+}
+
+/* Caixa de episodios */
+.episodios {
+     width: 300px;                       /* largura */
+    padding: 30px;                      /* espaco interno */
+    border: 2px solid darkorange;       /* borda laranja */
+    border-radius: 10px;                /* cantos arredondados */
+    background-color: black;            /* fundo preto */
+    margin-left: 1600px;                 /* distancia da esquerda */
+    margin-top: -670px;                 /* puxa a caixa para cima */
+    transition: transform 0.3s ease;    /* suaviza o movimento */
+    transform: scale(1.4);             /* reduz o tamanho da caixa */
+}
+
+/* Efeito da caixa de episodios ao passar o mouse */
+.episodios:hover {
+    transform: translateY(-10px);       /* sobe a caixa */
+}
+
+/* Titulo dentro da caixa de episodios */
+.episodios h2 {
+    font-size: 20px;                    /* tamanho do titulo */
+    background-color: red;              /* fundo vermelho */
+    border: 4px double red;             /* borda dupla vermelha */
+    border-radius: 5px;                 /* cantos arredondados */
+}
+
+/* Card de episodio */
+.episodio {
+    align-self: flex-end;               /* alinha o card no final do container flex */
+    background-color: #d9b676;          /* cor de fundo */
+    color: #421b10;                     /* cor do texto */
+    padding: 25px 32px;                 /* espaco interno */
+    text-align: center;                 /* centraliza o texto */
+    border: 3px solid #7b4a1f;          /* borda marrom */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* sombra do card */
+    transform: translateY(-40px);       /* sobe o card */
+}
+
+/* Texto pequeno dentro do episodio */
+.episodio span {
+    display: block;                     /* faz ocupar uma linha inteira */
+    font-family: "Cinzel", serif;      /* fonte decorativa */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    font-weight: 700;                   /* negrito */
+    font-size: 14px;                    /* tamanho do texto */
+}
+
+/* Numero ou titulo grande do episodio */
+.episodio h2 {
+    font-size: 52px;                    /* tamanho grande */
+    color: #8e2117;                     /* cor vermelha escura */
+}
+
+/* Link dentro do episodio */
+.episodio a {
+    font-size: 14px;                    /* tamanho do link */
+    font-weight: bold;                  /* negrito */
+}
+
+/* SECOES GERAIS */
+
+/* Area da hero da pagina de noticias */
+.hero-noticias {
+    margin-top: 100px;                  /* espaco acima */
+}
+
+/* Containers principais das secoes */
+.noticias,
+.personagens-secao,
+.mundo {
+    width: 92%;                         /* largura relativa */
+    max-width: 1200px;                  /* largura maxima */
+    margin: 0 auto;                     /* centraliza na pagina */
+}
+
+/* Topo de cada secao */
+.secao-topo {
+    display: flex;                      /* coloca titulo e link lado a lado */
+    align-items: center;                /* alinha verticalmente */
+    justify-content: space-between;     /* j430pxoga um item para cada lado */
+    margin-bottom: 25px;                /* espaco abaixo */
+}
+
+/* Titulo do topo da secao */
+.secao-topo h2 {
+    font-size: 30px;                    /* tamanho do titulo */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    color: #f5ead2;                     /* cor do titulo */
+}
+
+/* Link do topo da secao */
+.secao-topo a {
+    color: #d99b37;                     /* cor do link */
+    font-family: "Cinzel", serif;      /* fonte decorativa */
+    font-weight: 700;                   /* negrito */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    font-size: 14px;                    /* tamanho do texto */
+}
+
+/* NOTICIAS */
+
+/* Caixa de noticias secundarias */
+
+.noticias-ultimas {
+    width: 620px;                       /* largura */
+    height: 397px;                      /* altura */
+    padding: 20px;                      /* espaco interno */
+    border: 2px solid darkorange;       /* borda laranja */
+    border-radius: 10px;                /* cantos arredondados */
+    background-color: black;            /* fundo preto */
+    margin-left: 790px;                 /* distancia da esquerda */
+    margin-top: -597px;                   /* espaco acima */
+    transition: transform 0.3s ease;    /* suaviza o movimento */
+    transform: scale(1.2);             /* reduz o tamanho da caixa */
+    transform-origin: top left;        /* define o ponto de origem da transformacao */
+}
+
+.noticias-secundarias {
+    width: 415px;                       /* largura */
+    height: 400px;                      /* altura */
+    padding: 20px;                      /* espaco interno */
+    border: 2px solid darkorange;       /* borda laranja */
+    border-radius: 10px;                /* cantos arredondados */
+    background-color: black;            /* fundo preto */
+    margin-left: 1543px;                 /* distancia da esquerda */
+    margin-top: 120px;                   /* espaco acima */
+    transition: transform 0.3s ease;    /* suaviza o movimento */
+    transform: scale(1.2);             /* reduz o tamanho da caixa */
+    transform-origin: top left;        /* define o ponto de origem da transformacao */
+}
+
+
+.noticias-importentes {
+    width: 900px;                       /* largura */
+    height: 600px;                      /* altura */
+    padding: 20px;                      /* espaco interno */
+    border: 2px solid darkorange;       /* borda laranja */
+    border-radius: 10px;                /* cantos arredondados */
+    background-color: black;            /* fundo preto */
+    margin-left: 29px;                 /* distancia da esquerda */
+    margin-top: -110px;                   /* espaco acima */
+    transition: transform 0.3s ease;    /* suaviza o movimento */
+    transform: scale(0.8);             /* reduz o tamanho da caixa */
+    transform-origin: top left;        /* define o ponto de origem da transformacao */
+   
+}
+
+.noticias-importentes h2{
+    font-size: 30px;                    /* tamanho do titulo */
+    background-color: red;              /* fundo vermelho */
+    border: 4px double red;             /* borda dupla */
+    border-radius: 5px;                 /* cantos arredondados */
+
+}
+
+.noticias-importentes .titulo-secundario{
+    
+    font-size: 30px;                    /* tamanho do titulo */
+    color: rgb(245, 242, 242);                       /* cor do titulo */
+    margin-top: 10px;                   /* espaco acima */
+    background-color: #8b0000;          /* fundo vermelho escuro */
+    border: 2px solid #8b0000;          /* borda correspondente */
+}
+
+.noticias-importentes p{
+    color: rgb(245, 242, 242);                     /* cor do texto */
+    font-size: 20px;                    /* tamanho do texto */
+    margin: 6px 8px 16px;               /* margem externa */
+}
+
+/* Move a caixa de noticias secundarias para cima */
+.noticias-secundarias {
+    transform: translateY(-10px);       /* desloca a caixa para cima */
+}
+
+/* Botao dentro das noticias secundarias */
+.noticias-secundarias .button {
+    background-color: darkorange;       /* cor de fundo */
+    color: black;                       /* cor do texto */
+    padding: 10px 15px;                 /* espaco interno */
+    margin-top: 20px;                   /* espaco acima */
+}
+
+/* Titulo das noticias secundarias */
+.titulo-caixa {
+    font-size: 19px;                    /* tamanho do titulo */
+    background-color: red;              /* fundo vermelho */
+    border: 4px double red;             /* borda dupla */
+    border-radius: 5px;                 /* cantos arredondados */
+}
+
+.titulo-secundario {
+    font-size: 15px;                    /* tamanho do titulo */
+    color: white;                       /* cor do titulo */
+    margin-top: 10px;                   /* espaco acima */
+    background-color: #8b0000;          /* fundo vermelho escuro */
+    border: 2px solid #8b0000;          /* borda correspondente */
+}
+
+/* Pagina de noticias */
+.pagina-noticias {
+    min-height: 100vh;                  /* ocupa pelo menos a altura da tela */
+    background-image: url("../img/imagem-noticias-fundo.jpg"); /* imagem de fundo */
+    background-size: cover;             /* cobre toda a area */
+    background-position: center;        /* centraliza a imagem */
+    background-repeat: no-repeat;       /* nao repete a imagem */
+}
+
+/* Card da manchete principal */
+.manchete {
+    width: 1500px;                       /* largura */
+    height: 700px;                      /* altura */
+    background-color: rgb(8, 1, 1);     /* cor de fundo caso a imagem nao carregue */
+    border: 2px solid red;              /* borda inicial */
+    padding: 20px;                      /* espaco interno */
+    margin-top: 340px;                  /* espaco acima */
+    margin-left: 30px;                  /* distancia da esquerda */
+    border-radius: 10PX;                 /* cantos arredondados */
+    border-color: darkorange;           /* muda a cor da borda */
+    transition: transform 0.3s ease;    /* suaviza o movimento */
+    background-image: url("../img/manchete.jpg"); /* imagem de fundo */
+    background-size: cover;             /* cobre toda a caixa */
+    background-position: center;        /* centraliza a imagem */
+    background-repeat: no-repeat;       /* nao repete a imagem */
+}
+
+/* Efeito da manchete ao passar o mouse */
+.manchete:hover {
+    transform: translateY(-10px);       /* sobe a manchete */
+}
+
+/* Imagem dentro da manchete */
+.manchete img {
+    width: 100px;                       /* largura da imagem */
+    height: auto;                       /* altura automatica proporcional */
+    opacity: 0.1;                        /* deixa a imagem um pouco transparente */
+    filter: brightness(1.0);                   /* escurece a imagem */ 
+    
+}
+
+/* Titulo da manchete */
+.manchete h1 {
+    font-size: 90px;                    /* tamanho do titulo */
+    height: 140px;                      /* altura reservada para o titulo */
+    color: 	#FF0000;                     /* cor laranja */
+    margin: 5px;                        /* margem externa */
+}
+
+/* Etiqueta da manchete */
+.manchete span {
+    color: white;                       /* cor do texto */
+    background-color: red;              /* fundo vermelho */
+    padding: 5px 10px;                  /* espaco interno */
+    display: inline-block;              /* permite padding e largura */
+    margin-top: 15px;                   /* espaco acima */
+    border-radius: 5px;                 /* cantos arredondados */
+    font-size: 30px;                    /* tamanho do texto */
+}
+
+/* Paragrafo da manchete */
+.manchete p {
+    padding: 3px 10px;                  /* espaco interno */
+    margin-top: 130px;                  /* espaco acima */
+    display: inline-block;              /* ocupa apenas o tamanho do conteudo */
+    color:  #FF4500;                       /* cor do texto */
+    font-size: 40px;
+    font-family: "Georgia", serif;      /* fonte decorativa */   
+}
+
+/* Link da manchete */
+.manchete a {
+    padding: 10px 40px;                 /* espaco interno */
+    margin-top: 20px;                   /* espaco acima */
+    display: inline-block;              /* permite padding */
+    color: whitesmoke;                  /* cor do texto */
+    background-color: red;              /* fundo vermelho */
+    border-radius: 5px;                 /* cantos arredondados */
+    font-size: 30px;                    /* tamanho do texto */
+    margin-top: 80px;                   /* espaco acima */
+}
+
+/* Secao principal de noticias */
+.noticias {
+    background-color: #1a1009;          /* cor de fundo */
+    background-image: linear-gradient(135deg, #201209, #0d0a07); /* degradê de fundo */
+    border: 2px solid #3a2111;          /* borda */
+    padding: 38px 45px;                 /* espaco interno */
+    margin-top: -90px;                  /* puxa a secao para cima */
+    position: relative;                 /* permite controlar camada */
+    z-index: 3;                         /* fica acima de elementos com z-index menor */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* sombra externa */
+}
+
+/* Grade dos cards de noticias */
+.cards-noticias {
+    display: grid;                      /* cria layout em grade */
+    grid-template-columns: repeat(3, 1fr); /* cria 3 colunas iguais */
+    gap: 26px;                          /* espaco entre cards */
+}
+
+/* Card individual de noticia */
+.noticia {
+    background-color: #100c09;          /* cor de fundo */
+    border: 1px solid #9c6a2e;          /* borda */
+    overflow: hidden;                   /* esconde conteudo que passar da caixa */
+    min-height: 310px;                  /* altura minima */
+    position: relative;                 /* permite posicionamentos internos */
+}
+
+/* Imagem do card de noticia */
+.noticia img {
+    width: 100%;                        /* ocupa toda a largura do card */
+    height: 150px;                      /* altura fixa */
+    object-fit: cover;                  /* corta a imagem sem deformar */
+    filter: brightness(0.85);           /* escurece um pouco a imagem */
+}
+
+/* Etiqueta do card de noticia */
+.noticia span {
+    display: inline-block;              /* permite padding */
+    background-color: #9e1f17;          /* fundo vermelho escuro */
+    color: #fff;                        /* cor do texto */
+    padding: 6px 14px;                  /* espaco interno */
+    font-size: 12px;                    /* tamanho do texto */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    font-weight: bold;                  /* negrito */
+    margin: 15px 15px 8px;              /* espaco externo */
+}
+
+/* Titulo do card de noticia */
+.noticia h3 {
+    font-size: 18px;                    /* tamanho do titulo */
+    color: #fff1c9;                     /* cor do titulo */
+    margin: 0 15px 8px;                 /* margem externa */
+}
+
+/* Texto do card de noticia */
+.noticia p {
+    color: #d9c8a4;                     /* cor do texto */
+    font-size: 14px;                    /* tamanho do texto */
+    margin: 0 15px 14px;                /* margem externa */
+    line-height: 1.4;                   /* altura entre linhas */
+}
+
+/* Texto pequeno do card de noticia */
+.noticia small {
+    color: #d99b37;                     /* cor do texto */
+    font-size: 12px;                    /* tamanho do texto */
+    margin-left: 15px;                  /* espaco a esquerda */
+    text-transform: uppercase;          /* deixa em maiusculo */
+}
+
+/* Botao generico */
+.button {
+    background: #d99b37;                /* cor de fundo */
+    color: white;                       /* cor do texto */
+    padding: 14px 32px;                 /* espaco interno */
+    border: none;                       /* remove borda */
+    border-radius: 12px;                /* cantos arredondados */
+    font-size: 18px;                    /* tamanho do texto */
+    font-weight: bold;                  /* negrito */
+    cursor: pointer;                    /* mostra maozinha ao passar o mouse */
+    transition: all .3s ease;           /* suaviza todas as mudancas */
+    margin-top: 20px;                   /* espaco acima */
+}
+
+/* Efeito do botao ao passar o mouse */
+.button:hover {
+    background: #f5ad2d;                /* muda a cor de fundo */
+    
+    transform: translateX(40px);        /* move o botao para a direita */
+    box-shadow: 0 10px 25px rgba(217, 155, 55, .5); /* adiciona sombra */
+}
+
+/* PERSONAGENS */
+
+/* Secao dos personagens */
+.personagens-secao {
+    background-color: #d3a763;          /* cor de fundo */
+    color: #2a1609;                     /* cor do texto */
+    margin-top: 42px;                   /* espaco acima */
+    padding: 32px 38px;                 /* espaco interno */
+    border: 3px solid #8a5925;          /* borda */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* sombra externa */
+}
+
+/* Titulo do topo na secao de personagens */
+.personagens-secao .secao-topo h2 {
+    color: #2a1609;                     /* cor do titulo */
+}
+
+/* Link do topo na secao de personagens */
+.personagens-secao .secao-topo a {
+    color: #3b1c08;                     /* cor do link */
+}
+
+/* Grade de personagens */
+.personagens {
+    display: grid;                      /* cria layout em grade */
+    grid-template-columns: repeat(10, 1fr); /* cria 10 colunas iguais */
+    gap: 12px;                          /* espaco entre personagens */
+}
+
+/* Card de personagem */
+.personagem {
+    background-color: #ead09b;          /* cor de fundo */
+    border: 2px solid #9b6a2f;          /* borda */
+    text-align: center;                 /* centraliza o texto */
+    padding-bottom: 12px;               /* espaco interno embaixo */
+    transition: 0.3s;                   /* suaviza o hover */
+}
+
+/* Efeito do personagem ao passar o mouse */
+.personagem:hover {
+    transform: translateY(-6px);        /* sobe o card */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35); /* adiciona sombra */
+}
+
+/* Imagem do personagem */
+.personagem-img {
+    width: 100%;                        /* ocupa toda a largura do card */
+    height: 125px;                      /* altura fixa */
+    object-fit: cover;                  /* corta a imagem sem deformar */
+    object-position: top;               /* mostra mais a parte de cima da imagem */
+    border-bottom: 2px solid #9b6a2f;   /* borda embaixo da imagem */
+}
+
+/* Nome do personagem */
+.personagem h3 {
+    font-size: 15px;                    /* tamanho do nome */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    margin-top: 10px;                   /* espaco acima */
+}
+
+/* Descricao do personagem */
+.personagem p {
+    font-size: 12px;                    /* tamanho do texto */
+    color: #5d3718;                     /* cor do texto */
+    margin-top: 4px;                    /* espaco acima */
+}
+
+/* MUNDO */
+
+/* Secao mundo */
+.mundo {
+    display: grid;                      /* cria layout em grade */
+    grid-template-columns: 1fr 2fr;     /* primeira coluna menor e segunda maior */
+    gap: 42px;                          /* espaco entre colunas */
+    align-items: center;                /* alinha os itens verticalmente */
+    padding: 60px 45px;                 /* espaco interno */
+    background-color: #1a1009;          /* cor de fundo */
+    background-image:
+        linear-gradient(rgba(20, 11, 5, 0.92), rgba(20, 11, 5, 0.92)), /* camada escura */
+        url("../img/mapa.jpg");         /* imagem do mapa */
+    background-size: cover;             /* cobre toda a secao */
+    background-position: center;        /* centraliza a imagem */
+    border: 2px solid #3a2111;          /* borda */
+    margin-top: 42px;                   /* espaco acima */
+}
+
+/* Titulo da secao mundo */
+.mundo-texto h2 {
+    font-size: 42px;                    /* tamanho do titulo */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    line-height: 1.1;                   /* altura entre linhas */
+    color: #f5ead2;                     /* cor do titulo */
+    margin-bottom: 20px;                /* espaco abaixo */
+}
+
+/* Paragrafo da secao mundo */
+.mundo-texto p {
+    color: #e4d1a8;                     /* cor do texto */
+    line-height: 1.6;                   /* altura entre linhas */
+    margin-bottom: 25px;                /* espaco abaixo */
+}
+
+/* Botao secundario */
+.botao-secundario {
+    background-color: transparent;      /* fundo transparente */
+    color: #d99b37;                     /* cor do texto */
+    box-shadow: none;                   /* remove sombra */
+}
+
+/* Grade de lugares */
+.lugares {
+    display: grid;                      /* cria layout em grade */
+    grid-template-columns: repeat(4, 1fr); /* cria 4 colunas iguais */
+    gap: 18px;                          /* espaco entre cards */
+}
+
+/* Card de lugar */
+.lugar {
+    background-color: #100c09;          /* cor de fundo */
+    border: 2px solid #9c6a2e;          /* borda */
+    text-align: center;                 /* centraliza texto */
+    overflow: hidden;                   /* esconde partes que passem da caixa */
+}
+
+/* Imagem do lugar */
+.lugar img {
+    width: 100%;                        /* ocupa toda a largura */
+    height: 180px;                      /* altura fixa */
+    object-fit: cover;                  /* corta a imagem sem deformar */
+}
+
+/* Titulo do lugar */
+.lugar h3 {
+    color: #d99b37;                     /* cor do titulo */
+    font-size: 19px;                    /* tamanho do titulo */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    margin-top: 15px;                   /* espaco acima */
+}
+
+/* Texto do lugar */
+.lugar p {
+    color: #f5ead2;                     /* cor do texto */
+    font-size: 14px;                    /* tamanho do texto */
+    margin: 6px 8px 16px;               /* margem externa */
+}
+
+/* RODAPE */
+
+/* Area do rodape */
+.rodape {
+    margin-top: 45px;                   /* espaco acima */
+    background-color: #090807;          /* cor de fundo */
+    border-top: 1px solid #2f2115;      /* borda superior */
+    padding: 38px 70px;                 /* espaco interno */
+    display: grid;                      /* cria layout em grade */
+    grid-template-columns: 2fr repeat(4, 1fr); /* logo maior e 4 colunas menores */
+    gap: 35px;                          /* espaco entre colunas */
+}
+
+/* Logo do rodape */
+.rodape-logo img {
+    width: 180px;                       /* largura da logo */
+    margin-bottom: 15px;                /* espaco abaixo */
+}
+
+/* Texto do rodape */
+.rodape-logo p {
+    color: #bca982;                     /* cor do texto */
+    font-size: 14px;                    /* tamanho do texto */
+    line-height: 1.5;                   /* altura entre linhas */
+}
+
+/* Titulo das colunas do rodape */
+.rodape-coluna h4 {
+    color: #d99b37;                     /* cor do titulo */
+    text-transform: uppercase;          /* deixa em maiusculo */
+    font-size: 14px;                    /* tamanho do titulo */
+    margin-bottom: 14px;                /* espaco abaixo */
+}
+
+/* Links das colunas do rodape */
+.rodape-coluna a {
+    display: block;                     /* cada link fica em uma linha */
+    color: #bca982;                     /* cor do link */
+    font-size: 14px;                    /* tamanho do texto */
+    margin-bottom: 8px;                 /* espaco abaixo */
+}
+
+/* Efeito dos links do rodape ao passar o mouse */
+.rodape-coluna a:hover {
+    color: #f0bd65;                     /* muda a cor do link */
+}
+
+/* RESPONSIVO */
+
+/* Regras para telas de ate 1000px */
+@media (max-width: 1000px) {
+    .cabecalho {
+        padding: 20px 30px;             /* diminui o espaco lateral do cabecalho */
+    }
+
+    .navbar {
+        flex-direction: column;         /* coloca logo e menu um embaixo do outro */
+        gap: 18px;                      /* espaco entre logo e menu */
+    }
+
+    .nav-links {
+        flex-wrap: wrap;                /* permite quebrar os links para outra linha */
+        justify-content: center;        /* centraliza os links */
+        gap: 18px;                      /* espaco entre os links */
+    }
+
+    .hero {
+        padding: 190px 35px 70px;       /* ajusta o espaco interno */
+        min-height: 700px;              /* ajusta a altura minima */
+        flex-direction: column;         /* coloca conteudos em coluna */
+        align-items: flex-start;        /* alinha no inicio */
+        gap: 35px;                      /* espaco entre os conteudos */
+    }
+
+    .hero-texto {
+        width: 100%;                    /* ocupa toda a largura disponivel */
+        max-width: 480px;               /* limita a largura maxima */
+    }
+
+    .cards-noticias {
+        grid-template-columns: 1fr;     /* deixa os cards em uma coluna */
+    }
+
+    .personagens {
+        grid-template-columns: repeat(5, 1fr); /* muda para 5 colunas */
+    }
+
+    .mundo {
+        grid-template-columns: 1fr;     /* deixa a secao mundo em uma coluna */
+    }
+
+    .lugares {
+        grid-template-columns: repeat(2, 1fr); /* muda lugares para 2 colunas */
+    }
+
+    .rodape {
+        grid-template-columns: repeat(2, 1fr); /* muda rodape para 2 colunas */
+        padding: 35px;                  /* diminui o espaco interno */
+    }
+}
+
+/* Regras para telas de ate 600px */
+@media (max-width: 600px) {
+    .logo-img {
+        width: 150px;                   /* diminui a logo */
+    }
+
+    .nav-links {
+        gap: 12px;                      /* diminui o espaco entre links */
+    }
+
+    .nav-links a {
+        font-size: 12px;                /* diminui o tamanho dos links */
+    }
+
+    .hero {
+        padding: 180px 22px 60px;       /* ajusta o espaco interno da hero */
+    }
+
+    .hero-texto h1 {
+        font-size: 36px;                /* diminui o titulo */
+    }
+
+    .hero-texto p {
+        font-size: 16px;                /* diminui o paragrafo */
+    }
+
+    .episodio {
+        width: 100%;                    /* card ocupa toda a largura */
+    }
+
+    .noticias,
+    .personagens-secao,
+    .mundo {
+        width: 94%;                     /* aumenta um pouco a largura relativa */
+        padding: 28px 20px;             /* ajusta o espaco interno */
+    }
+
+    .secao-topo {
+        align-items: flex-start;        /* alinha no inicio */
+        flex-direction: column;         /* coloca titulo e link em coluna */
+        gap: 8px;                       /* espaco entre titulo e link */
+    }
+
+    .secao-topo h2 {
+        font-size: 24px;                /* diminui o titulo da secao */
+    }
+
+    .personagens {
+        grid-template-columns: repeat(2, 1fr); /* muda personagens para 2 colunas */
+    }
+
+    .personagem-img {
+        height: 150px;                  /* aumenta a altura da imagem no mobile */
+    }
+
+    .lugares {
+        grid-template-columns: 1fr;     /* deixa lugares em uma coluna */
+    }
+
+    .mundo-texto h2 {
+        font-size: 32px;                /* diminui o titulo da secao mundo */
+    }
+
+    .rodape {
+        grid-template-columns: 1fr;     /* deixa o rodape em uma coluna */
+    }
+}
